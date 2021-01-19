@@ -655,6 +655,7 @@ func (p *PollingDeviationChecker) shouldPerformInitialPoll() bool {
 func (p *PollingDeviationChecker) hibernate() {
 	logger.Infof("entering hibernation mode for contract: %s", p.initr.Address.Hex())
 	p.isHibernating = true
+	p.resetTickers(flux_aggregator_wrapper.OracleRoundState{})
 }
 
 // reactivate restarts the PollingDeviationChecker without hibernation mode
